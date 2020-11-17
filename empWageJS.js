@@ -12,10 +12,7 @@ const NUM_OF_WORKING_DAYS = 20;
 const MAX_HRS_IN_MONTH = 160;
 let totalEmpHrs = 0;
 let totalWorkingDays = 0;
-let empDailyWageArr = new Array();
 let empHrs = 0;
-let empDailyWageMap = new Map();
-let empDailyHrsMap = new Map();
 let empDailyHrsAndWageArr = new Array();
 
 function getWorkingHours(empCheck){
