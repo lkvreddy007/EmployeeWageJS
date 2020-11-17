@@ -20,16 +20,45 @@ class EmployeePayrollData{
     }
 
     get id(){return this._id;}
-    set id(id){this._id=id;}
+    set id(id){
+        if(id>0){
+            this._id=id
+        }
+        else{
+            throw 'Invalid Id'
+        };
+    }
 
     get salary(){return this._salary;}
-    set salary(salary){this._salary=salary;}
+    set salary(salary){
+        if(salary>0){
+            this._salary=salary;
+        }
+        else{
+            throw 'Invalid Salary';
+        }
+    }
 
     get gender(){return this._gender;}
-    set gender(gender){this._gender=gender;}
+    set gender(gender){
+        let genderRegex = RegExp("^[MFmf]$")
+        if(genderRegex.test(gender)){
+            this._gender=gender;
+        }
+        else{
+            throw 'Invalid Gender';
+        }
+    }
 
     get startDate(){return this._startDate;}
-    set startDate(startDate){this._startDate=startDate;}
+    set startDate(startDate){
+        if(startDate>new Date()){
+            throw 'Invalid Date';
+        }
+        else{
+        this._startDate=startDate;
+        }
+    }
 
     toString(){
         const options = {year: 'numeric',month: 'long',day: 'numeric'};
@@ -41,7 +70,7 @@ class EmployeePayrollData{
 let employeePayrollData = new EmployeePayrollData(1,"Mark",30000,"F",new Date());
 console.log(employeePayrollData.toString());
 try{
-    let newEmployeePayrollData = new EmployeePayrollData(1,"john",30000,"M",new Date());
+    let newEmployeePayrollData = new EmployeePayrollData(-1,"john",-30000,"M",new Date());
     console.log(newEmployeePayrollData.toString());
 }
 catch(e){
